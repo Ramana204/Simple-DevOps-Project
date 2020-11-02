@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: create docker image using war file
+    command: docker build -t simple-image:latest .
+    args:
+      chdir: /opt/docker
+  - name: create tag to image
+    command: docker tag simple-image yankils/simple-image
+  - name: push image on to dockerhub
+    command: docker push yankils/simple-image
+  - name: remove docker images from ansible-server
+    command: docker rmi simple-image:latest yankils/simple-
+image
+    ignore_errors: yes
+
+
+  - name: pull docker image from dockerhub
+    command: docker pull yankils/simple-image:latest
+
+  - name: create container using simple-image
+    command: docker run -d --name simple-container -p 8080:
+8080 yankils/simple-image:latest
