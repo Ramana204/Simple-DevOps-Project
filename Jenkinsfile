@@ -28,6 +28,18 @@ node{
                  sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.12.178 docker rm -f javawebappcontainer || true"
                  sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.12.178 docker run -d --name javawebappcontainer -p 8080:8080 ram204/java-web-app-docker:${buildNumber}"
                }
+      /**stage("Deploy To Kuberates Cluster"){
+       kubernetesDeploy(
+         configs: 'springBootMongo-PrivateRepo.yml', 
+         kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
+         enableConfigSubstitution: true
+        )
+     }
+	**/
+	
+    stage("Deploy To Kuberates Cluster"){
+        sh 'kubectl create -f springBootMongo-PrivateRepo.yml'
+      } 
     
     }
 }
