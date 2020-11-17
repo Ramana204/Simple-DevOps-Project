@@ -61,3 +61,7 @@ node{
     
     }
 }
+
+/**
+pipeline syntax help : https://static.skillshare.com/uploads/attachment/252413450/e0981958/pipeline-syntax.xlsx
+                     : https://static.skillshare.com/uploads/attachment/252413450/a39d96ab/pipeline_syntax.htm
