@@ -59,9 +59,20 @@ docker start <container_id>
 
 ```sh
 docker rm <container_id>
-```
 
-12. login to a docker container
+12. Remove a running container
+
+docker rm -f <container_id>
+
+13. login to a docker container
 ```sh
 docker exec -it <container_Name> /bin/bash
 ```
+
+14.Remove docker images
+
+docker rmi <image-id>
+  
+15.check container logs
+
+docker logs <container_id>
